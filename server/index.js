@@ -1,8 +1,21 @@
-const http = require('http');
-const app = http.createServer((req, res) => {
-  console.log(req);
-  // res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('响应内容');
-});
+const Express = require('express');
 
-app.listen(5000);
+const app = new Express();
+
+const userRouter = require('./routes/user');
+
+app.listen(9000);
+
+app.use('/user', userRouter);
+
+// app.get('/user', function(req, res) {
+//   console.log(req.params);
+// });
+
+// app.get('/upload', function(req, res) {
+//   console.log(req.params);
+// });
+
+// app.all('*', function(req, res) {
+//   res.end('404');
+// });
