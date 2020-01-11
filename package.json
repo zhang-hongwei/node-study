@@ -36,7 +36,8 @@
     "test:all": "node ./tests/run-tests.js",
     "test:component": "umi test ./src/components",
     "ui": "umi ui",
-    "spider": "node server/spider"
+    "spider": "node server/spider",
+    "book": "gitbook ./gitbook"
   },
   "husky": {
     "hooks": {

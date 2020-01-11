@@ -1,8 +1,11 @@
-const http = require('http');
-const app = http.createServer((req, res) => {
-  console.log(req);
-  // res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('响应内容');
-});
+const Express = require('express');
+const app = new Express();
+const loginRouter = require('./routers/login/login');
+const userRouter = require('./routers/users/index.js');
+const navRouter = require('./routers/nav/index.js');
 
-app.listen(5000);
+app.listen(1900);
+
+app.use(loginRouter);
+app.use('/user', userRouter);
+app.use('/nav', navRouter);
