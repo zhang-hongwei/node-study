@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/test');
 
 const catSchema = mongoose.Schema({
   name: String,
@@ -7,6 +6,4 @@ const catSchema = mongoose.Schema({
   createTime: Number,
 });
 
-const Catten = mongoose.model('Catten', catSchema);
-
-module.exports = { Catten: Catten };
+mongoose.model('Catten', catSchema);
