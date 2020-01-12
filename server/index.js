@@ -1,21 +1,22 @@
 const Express = require('express');
-
 const app = new Express();
 
-const userRouter = require('./routes/user');
+const session = require('express-session');
+const cookie = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-app.listen(9000);
+const loginRouter = require('./routers/login/login');
+const userRouter = require('./routers/users/index');
+const navRouter = require('./routers/nav/index');
 
-app.use('/user', userRouter);
+app.listen(1900);
 
-// app.get('/user', function(req, res) {
-//   console.log(req.params);
-// });
+app.use(cookie('_mock_user_'));
 
-// app.get('/upload', function(req, res) {
-//   console.log(req.params);
-// });
+app.use(function(req, res, next) {
+  console.log(req.cookies.name);
+});
 
-// app.all('*', function(req, res) {
-//   res.end('404');
-// });
+app.use('/api/', loginRouter);
+app.use('/api/user', userRouter);
+app.use('/api/nav', navRouter);
