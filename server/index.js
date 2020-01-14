@@ -22,20 +22,20 @@ app.use(
   }),
 );
 
-app.use(function(req, res, next) {
-  res.cookie('name', 'ceshi');
-  if (req.session.isFirst) {
-    console.log(req.session);
-  } else {
-    req.session.isFirst = 1;
-    res.cookie('name1', 'ceshiset');
-    res.cookie('name2', 'ceshiset');
-    res.cookie('name3', 'ceshiset');
-  }
+// app.use(function(req, res, next) {
+//   res.cookie('name', 'ceshi');
+//   if (req.session.isFirst) {
+//     console.log(req.session);
+//   } else {
+//     req.session.isFirst = 1;
+//     res.cookie('name1', 'ceshiset');
+//     res.cookie('name2', 'ceshiset');
+//     res.cookie('name3', 'ceshiset');
+//   }
 
-  res.send('测试');
-  // next();
-});
+//   res.send('测试');
+//   // next();
+// });
 
 app.use('/api/', loginRouter);
 app.use('/api/user', userRouter);
