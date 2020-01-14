@@ -1,5 +1,6 @@
 const Express = require('express');
 const { resMsg } = require('../../utils');
+
 const router = Express.Router();
 
 router.use(function(req, res, next) {
@@ -9,8 +10,6 @@ router.use(function(req, res, next) {
 });
 
 router.post('/login', function(req, res) {
-  // console.log(req);
-
   res.cookie('_mock_user_', 1, { maxAge: 60 * 1000 });
   res.send(resMsg(1));
 });
