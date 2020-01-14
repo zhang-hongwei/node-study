@@ -1,20 +1,25 @@
 const Express = require('express');
-const app = new Express();
-
-const session = require('express-session');
-const cookie = require('cookie-parser');
-const bodyParser = require('body-parser');
-
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const loginRouter = require('./routers/login/login');
 const userRouter = require('./routers/users/index');
 const navRouter = require('./routers/nav/index');
 
+const app = new Express();
 app.listen(1900);
+app.use(cookieParser());
 
-app.use(cookie('_mock_user_'));
+app.use(
+  cookieSession({
+    name: 'ceshi',
+    keys: ['fds', 'afsd', 'fasdfas', 'fd123gs', '123fgdsdf'],
+  }),
+);
 
-app.use(function(req, res, next) {
-  console.log(req.cookies.name);
+app.use('/', function(req, res) {
+  // req.session['ssion_name'] = '测试';
+  // console.log(req.session);
+  res.send('ceshi');
 });
 
 app.use('/api/', loginRouter);
