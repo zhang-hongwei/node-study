@@ -28,8 +28,13 @@ app.use(function(req, res, next) {
     console.log(req.session);
   } else {
     req.session.isFirst = 1;
+    res.cookie('name1', 'ceshiset');
+    res.cookie('name2', 'ceshiset');
+    res.cookie('name3', 'ceshiset');
   }
-  next();
+
+  res.send('测试');
+  // next();
 });
 
 app.use('/api/', loginRouter);
