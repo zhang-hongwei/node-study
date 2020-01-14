@@ -138,8 +138,6 @@ multer
 
 consolidate
 
-## session
-
 ### cookie-session
 
 ```js

@@ -6,5 +6,7 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-unused-vars': 0,
+    'no-console': 0,
+    'spaced-comment': 0,
   },
 };

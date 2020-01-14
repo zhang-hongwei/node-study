@@ -8,6 +8,8 @@ const loginRouter = require('./routers/login/login');
 const userRouter = require('./routers/users/index');
 const navRouter = require('./routers/nav/index');
 
+require('./mongodb/index');
+
 const app = new Express();
 app.listen(1900);
 app.use(cookie());
