@@ -11,6 +11,9 @@ router.use(function(req, res, next) {
 
 router.post('/login', function(req, res) {
   res.cookie('_mock_user_', 1, { maxAge: 60 * 1000 });
+  // const { userName, password } = req.body;
+
+  // console.log(userName, password);
   res.send(resMsg(1));
 });
 

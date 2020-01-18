@@ -1,4 +1,4 @@
-const Express = require('express');
+const express = require('express');
 const cookie = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const expressSession = require('express-session');
@@ -10,8 +10,10 @@ const navRouter = require('./routers/nav/index');
 
 require('./mongodb/index');
 
-const app = new Express();
+const app = express();
 app.listen(1900);
+app.use(bodyParser.json());
+
 app.use(cookie());
 
 app.use(
@@ -23,20 +25,10 @@ app.use(
   }),
 );
 
-// app.use(function(req, res, next) {
-//   res.cookie('name', 'ceshi');
-//   if (req.session.isFirst) {
-//     console.log(req.session);
-//   } else {
-//     req.session.isFirst = 1;
-//     res.cookie('name1', 'ceshiset');
-//     res.cookie('name2', 'ceshiset');
-//     res.cookie('name3', 'ceshiset');
-//   }
-
-//   res.send('测试');
-//   // next();
-// });
+app.use('/', function(req, res, next) {
+  console.log(req.body);
+  next();
+});
 
 app.use('/api/', loginRouter);
 app.use('/api/user', userRouter);
